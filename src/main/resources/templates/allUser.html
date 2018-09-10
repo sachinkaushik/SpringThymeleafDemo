@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Spring Thymleaf</title>
+</head>
+
+<body>
+<h1>User Details</h1>
+		<div th:if="${msg}" th:utext="${msg}"
+		style="color: red; font-style: italic; font-size: large;">
+		</div>
+         <div>
+         <table>
+	      <tr>
+	     	<th>S.No.</th>
+	      	<th>First Name</th>
+	      	<th>Last Name</th>
+	      	<th>Take Action</th>
+	      </tr>
+         	<tr th:each="user, userCount: ${users}">
+         	 	<td th:text="${userCount.count}" />
+			    <td th:text="${user.firstName}" />
+			    <td th:text="${user.lastName}" />
+			    <td><a th:href="@{'/editUser/'+${user.id}}">Edit</a></td>
+			    <td><a th:href="@{'/deleteUser/'+${user.id}}">Delete</a></td>
+			</tr>
+			</table>
+         </div>
+         <a th:href="@{/index}">Home page</a>
+</body>
+
+</html>

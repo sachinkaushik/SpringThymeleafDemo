@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Spring Thymleaf</title>
+</head>
+
+<body>
+<h1>Spring Demo</h1>
+   <form th:action="@{'/updateUser/'+${user.id}}"
+         th:object="${user}" th:method="PUT">
+         First Name:
+         <input type="text" th:field="${user.firstName}" />    
+         <br/>
+         Last Name:
+         <input type="text" th:field="${user.lastName}" />     
+         <br/>
+         <input type="submit" value="Update User" />
+      </form>
+</body>
+
+</html>
