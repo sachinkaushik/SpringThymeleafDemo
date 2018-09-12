@@ -53,13 +53,13 @@ public class UserController {
 	}
 	
 	@GetMapping("/editUser/{id}")
-	public String editUser(@ModelAttribute User user, @PathVariable Integer id, ModelMap map) {
+	public String editUser(@ModelAttribute User user, @PathVariable(required=true) Integer id, ModelMap map) {
 		map.put("user", userRepository.findById(id).get());
 		return "editUser";
 	}
 	
 	@PutMapping("/updateUser/{id}")
-	public String updateUser(@ModelAttribute User user, @PathVariable Integer id, ModelMap map) {
+	public String updateUser(@ModelAttribute User user, @PathVariable(required=true) Integer id, ModelMap map) {
 		String msg ;
 		Optional<User> usr = userRepository.findById(id);
 		if(usr.isPresent()) {
@@ -74,7 +74,7 @@ public class UserController {
 	}
 	
 	@GetMapping("/deleteUser/{id}")
-	public String deleteUser(@ModelAttribute User user, @PathVariable Integer id, ModelMap map) {
+	public String deleteUser(@ModelAttribute User user, @PathVariable(required=true) Integer id, ModelMap map) {
 		String msg ;
 		Optional<User> usr = userRepository.findById(id);
 		if(usr.isPresent()) {
